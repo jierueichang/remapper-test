@@ -40,7 +40,6 @@ def retrieve_images(path):
     # r=root, d=directories, f = files
     for r, d, f in os.walk('static\\trips\\'+path):
         for file in f:
-            print file
             if '.JPG' in file:
                 files.append([path+'\\'+file])
 
