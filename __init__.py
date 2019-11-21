@@ -131,7 +131,6 @@ def mainpage():
     thumbs = []
     for i in trips:
         for r, d, f in os.walk('static\\trips\\'+i+'\\images'):
-            print f
             thumbs.append('static/trips/'+i+'/images/'+f[0])
     '''if mainpage_counter == 0:
         mainpage_counter += 1
@@ -155,12 +154,12 @@ def upload_file():
     global MAP_ROUTE, logged_on
     if request.method == 'POST':
         
-        print(request.files)
+        #print(request.files)
         name = request.form['name'].replace(' ','_')
-        print(name)
+        #print(name)
         images = request.files.getlist('images')
         gpxfile = request.files['gpxfile']
-        print(images)
+        #print(images)
         imagefilenames = []
         os.makedirs('static/trips/'+name+'/images')
         for f in images:
@@ -172,8 +171,8 @@ def upload_file():
         #images=[['jauntimages\\IMG_5690.JPG', 'jauntimages\\IMG_5691.JPG', 'jauntimages\\IMG_5694.JPG'], ['jauntimages\\IMG_5741.JPG','jauntimages\\IMG_5742.JPG'], ['jauntimages\\IMG_5745.JPG', 'jauntimages\\IMG_5746.JPG', 'jauntimages\\IMG_5747.JPG'], ['jauntimages\\IMG_5765.JPG'], ['jauntimages\\IMG_5797.JPG', 'jauntimages\\IMG_5799.JPG', 'jauntimages\\IMG_5719.JPG']]
         #coords=[[40.37194, -74.63389], [40.37222, -74.63417], [40.37222, -74.63417], [40.37194, -74.63528], [40.375, -74.63222]]
         images,coords=exiffer.return_gps(name)
-        print(images)
-        print(coords)
+        #print(images)
+        #print(coords)
         if '.gpx' in target_gpxfile: MAP_ROUTE = parse_gpx(target_gpxfile)
         else:
             with open(target_gpxfile) as f:
